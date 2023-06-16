@@ -4,6 +4,7 @@ import css from './App.module.css';
 
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
+import { countTotalFeedback } from 'utils';
 
 export class App extends Component {
   state = {
@@ -29,11 +30,15 @@ export class App extends Component {
             onFeedbackButton={this.getFeedback}
           />
 
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-          />
+          {countTotalFeedback(this.state) !== 0 ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+            />
+          ) : (
+            <h2 className={css.notification}>There is no feedback</h2>
+          )}
         </div>
       </section>
     );

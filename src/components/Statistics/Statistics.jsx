@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import css from './Statistics.module.css';
+import { countPositiveFeedbackPercentage, countTotalFeedback } from 'utils';
 
 export class Statistics extends Component {
   render() {
     const { good, neutral, bad } = this.props;
-    const totalFeedback = good + neutral + bad;
     return (
       <div className={css.statistics_wrapper}>
         <h2 className={css.statistics_title}>Statistics</h2>
@@ -25,16 +25,18 @@ export class Statistics extends Component {
           </li>
           <li className={css.statistics_item}>
             <p className={css.statistics_item__description}>
-              Total: {totalFeedback}
+              Total: {countTotalFeedback(this.props)}
             </p>
           </li>
-          {totalFeedback !== 0 && (
-            <li className={css.statistics_item}>
-              <p className={css.statistics_item__description}>
-                Positive feedback: {Math.round((good / totalFeedback) * 100)} %
-              </p>
-            </li>
-          )}
+          <li className={css.statistics_item}>
+            <p className={css.statistics_item__description}>
+              Positive feedback:
+              {countPositiveFeedbackPercentage(
+                good,
+                countTotalFeedback(this.props)
+              )}
+            </p>
+          </li>
         </ul>
       </div>
     );
