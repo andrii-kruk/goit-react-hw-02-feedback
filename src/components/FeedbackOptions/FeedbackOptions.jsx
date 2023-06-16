@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import css from './FeedbackOptions.module.css';
 import { Button } from './FeedbackButton/FeedbackButton';
 
 export class FeedbackOptions extends Component {
   render() {
-    const { keys, onFeedbackButton } = this.props;
+    const { keys, onLeaveFeedback } = this.props;
+
+    const { feedback_options } = css;
 
     return (
-      <ul className={css.feedback_options}>
+      <ul className={feedback_options}>
         {keys.map(buttonName => (
           <Button
             key={buttonName}
-            onFeedbackButton={() => onFeedbackButton(buttonName)}
+            onLeaveFeedback={() => onLeaveFeedback(buttonName)}
             buttonName={buttonName}
           />
         ))}
@@ -24,5 +26,5 @@ export class FeedbackOptions extends Component {
 
 FeedbackOptions.propTypes = {
   keys: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onFeedbackButton: PropTypes.func.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };

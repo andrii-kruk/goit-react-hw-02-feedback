@@ -10,3 +10,7 @@ export const countTotalFeedback = feedback => {
   }
   return total;
 };
+
+export const toFirstLetterUpperCase = str => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};

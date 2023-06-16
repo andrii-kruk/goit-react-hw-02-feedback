@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { toFirstLetterUpperCase } from 'utils';
 import css from './FeedbackButton.module.css';
 
-export const Button = ({ onFeedbackButton, buttonName }) => {
-  const toFirstLetterUpperCase = str => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
+export const Button = ({ onLeaveFeedback, buttonName }) => {
+  const { feedback_option, option_button } = css;
 
   return (
-    <li className={css.feedback_option} key={buttonName}>
+    <li className={feedback_option} key={buttonName}>
       <button
         type="button"
-        className={css.option_button}
-        onClick={onFeedbackButton}
+        className={option_button}
+        onClick={onLeaveFeedback}
         name={buttonName}
       >
         {toFirstLetterUpperCase(buttonName)}
@@ -23,6 +22,6 @@ export const Button = ({ onFeedbackButton, buttonName }) => {
 };
 
 Button.propTypes = {
-  onFeedbackButton: PropTypes.func.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
   buttonName: PropTypes.string.isRequired,
 };
