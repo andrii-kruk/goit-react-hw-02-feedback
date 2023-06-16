@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import css from './FeedbackButton.module.css';
 
@@ -19,4 +20,9 @@ export const Button = ({ onFeedbackButton, buttonName }) => {
       </button>
     </li>
   );
+};
+
+Button.propTypes = {
+  onFeedbackButton: PropTypes.func.isRequired,
+  buttonName: PropTypes.string.isRequired,
 };

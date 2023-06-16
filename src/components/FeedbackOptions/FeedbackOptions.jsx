@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Button } from './FeedbackButton/FeedbackButton';
+import PropTypes from 'prop-types'
+
 import css from './FeedbackOptions.module.css';
+import { Button } from './FeedbackButton/FeedbackButton';
 
 export class FeedbackOptions extends Component {
   render() {
@@ -19,3 +21,8 @@ export class FeedbackOptions extends Component {
     );
   }
 }
+
+FeedbackOptions.propTypes = {
+  keys: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onFeedbackButton: PropTypes.func.isRequired,
+};

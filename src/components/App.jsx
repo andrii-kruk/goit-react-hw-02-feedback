@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
+import css from './App.module.css';
+
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
-import css from './App.module.css';
 
 export class App extends Component {
   state = {
